@@ -29,10 +29,10 @@ Route.get('/favoritos', async () => {
   return favoritos
 })
 
-Route.get('/favoritos/:id', async ({params}) => {
+Route.get('/favoritos/:id', async ({params, response}) => {
   let favoritoEncontrado=favoritos.find((favorito)=>favorito.id==params.id)
   if favoritoEncontrado==undefined
-  return {msg: 'favorito não encontrado'}
+  return response.status(404)
   return favoritoEncontrado
 })
 
